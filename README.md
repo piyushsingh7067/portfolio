@@ -1,4 +1,4 @@
-<!-- # 🌐 Personal Portfolio  
+# 🌐 Personal Portfolio  
 
 A **modern, responsive, and fast portfolio website** built with **React + Vite**.  
 Showcasing my skills, projects, and experience with a clean UI and smooth performance.  
@@ -41,4 +41,4 @@ cd portfolio
 npm install  
 
 # Start dev server
-npm run dev   -->
+npm run dev  
