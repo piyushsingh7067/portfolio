@@ -1,4 +1,5 @@
 import { Link, MoveUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Project() {
   const projects = [
@@ -33,19 +34,38 @@ export default function Project() {
   ];
 
   return (
-    <section className="px-4 py-12 bg-gradient-to-b from-gray-950 via-black to-gray-900">
-      <h2 className="text-4xl font-bold text-white mb-10 text-center">
+    <section className="relative px-4 py-16 overflow-hidden">
+     
+      <motion.div
+        className="absolute inset-0 -z-10"
+        animate={{
+          background: [
+            "linear-gradient(135deg, #0f172a, #1e3a8a, #9333ea)"
+          ],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <h2 className="text-4xl font-bold text-white mb-12 text-center">
         Projects 🚀
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {projects.map((project, index) => (
-          <div
+          <motion.div
             key={index}
-            className="group relative bg-black/80 border border-gray-800 rounded-2xl shadow-lg overflow-hidden transition-transform duration-500 hover:scale-105 hover:border-white/40"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: index * 0.2 }}
+            className="group relative bg-black/70 border border-gray-700 rounded-2xl shadow-lg overflow-hidden"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 20px rgba(59,130,246,0.6)", 
+            }}
           >
-            {/* Hover gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
             <div className="relative p-6 flex flex-col h-full">
               <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
@@ -55,7 +75,7 @@ export default function Project() {
                 {project.description}
               </p>
 
-              {/* Links */}
+             
               <div className="mt-auto flex gap-4">
                 <a
                   href={project.github}
@@ -69,13 +89,13 @@ export default function Project() {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-600 hover:bg-blue-500 transition"
+                  className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition"
                 >
                   <MoveUpRight className="w-5 h-5 text-white" />
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

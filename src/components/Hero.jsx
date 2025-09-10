@@ -3,36 +3,67 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <div className="bg-black w-full flex justify-center items-center text-white px-4 py-16">
-      <div className="flex flex-col items-center max-w-3xl text-center">
-        {/* Profile Image */}
+    <section className="relative w-full flex justify-center items-center text-white px-4 py-20 overflow-hidden">
+      
+      <motion.div
+        className="absolute inset-0 -z-10"
+        animate={{
+          background: [
+             "linear-gradient(135deg, #0f172a, #1e3a8a, #9333ea)"
+          ],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="flex flex-col items-center max-w-3xl text-center relative">
+       
+        <motion.div
+          className="absolute w-60 h-60 sm:w-72 sm:h-72 rounded-full bg-cyan-500/30 blur-3xl -z-10"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.6, 0.9, 0.6] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+       
         <motion.img
           src={pic}
           alt="Piyush"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, type: "spring" }}
-          className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl object-cover 
-                     shadow-[0_0_25px_rgba(0,255,255,0.5)] 
+          className="w-46 h-46 sm:w-44 sm:h-44 rounded-2xl object-cover 
+                     shadow-[0_0_30px_rgba(0,200,255,0.6)] 
                      transition-transform duration-700 hover:scale-110 cursor-pointer"
         />
 
-        {/* Name */}
-        <h1 className="mt-6 text-3xl sm:text-5xl font-extrabold tracking-tight">
+        <motion.h1
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-6 text-3xl sm:text-5xl font-extrabold tracking-tight"
+        >
           Hi, I'm{" "}
-          <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-            Piyush Singh
-          </span>
-        </h1>
+          <span className="text-white">
+             Piyush Singh
+         </span>
 
-        {/* Subtitle */}
-        <h2 className="mt-3 text-md sm:text-2xl font-medium tracking-wide text-white/80">
+        </motion.h1>
+
+        <motion.h2
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-3 text-md sm:text-2xl font-medium tracking-wide text-white/80"
+        >
           15, Maidani Rewa | MERN Stack Developer.
-        </h2>
+        </motion.h2>
 
-        {/* Bio */}
-        <p className="mt-6 text-sm sm:text-lg text-white/70 leading-relaxed">
-         "Computer Science undergraduate with a strong foundation in software
+        <motion.p
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-6 text-sm sm:text-lg text-white/70 leading-relaxed"
+        >
+          "Computer Science undergraduate with a strong foundation in software
           development. Skilled in{" "}
           <span className="text-cyan-400">JavaScript</span>,{" "}
           <span className="text-cyan-400">React.js</span>,{" "}
@@ -41,10 +72,10 @@ export default function Hero() {
           building and deploying responsive full-stack web applications.
           Proficient in developing RESTful APIs, managing state with modern
           libraries, and implementing secure user authentication. Familiar with
-           Git, Postman, and modern UI frameworks like{" "}
+          Git, Postman, and modern UI frameworks like{" "}
           <span className="text-purple-400">Tailwind CSS</span>."
-        </p>
+        </motion.p>
       </div>
-    </div>
+    </section>
   );
 }
